@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Upload, X, FileText } from "lucide-react";
+import { Upload, X, FileText, CreditCard } from "lucide-react";
 import { FormData } from "@/pages/FormPage";
 
 interface Props {
@@ -9,15 +9,25 @@ interface Props {
 
 export default function StepCNPS({ data, onChange }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const identityCardInputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
+  const [identityDragging, setIdentityDragging] = useState(false);
 
   const handleFile = (file: File | null) => onChange("cnpsProof", file);
+  const handleIdentityCard = (file: File | null) => onChange("identityCard", file);
 
   const onDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setDragging(false);
     const file = e.dataTransfer.files[0];
     if (file) handleFile(file);
+  };
+
+  const onIdentityDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIdentityDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (file) handleIdentityCard(file);
   };
 
   return (
@@ -84,52 +94,103 @@ export default function StepCNPS({ data, onChange }: Props) {
             </p>
           </div>
 
-          <div>
-            <p className="text-sm font-medium text-gray-700 mb-2">Preuve de paiement</p>
-            <div
-              onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
-              onDragLeave={() => setDragging(false)}
-              onDrop={onDrop}
-              onClick={() => !data.cnpsProof && fileInputRef.current?.click()}
-              className={`rounded-md border-2 border-dashed p-6 text-center transition-all ${
-                dragging
-                  ? "border-gray-400 bg-gray-50"
-                  : data.cnpsProof
-                  ? "border-gray-300 bg-gray-50 cursor-default"
-                  : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 cursor-pointer"
-              }`}
-            >
-              {data.cnpsProof ? (
-                <div className="flex items-center justify-center gap-3">
-                  <FileText className="w-5 h-5 text-gray-500" />
-                  <div className="text-left">
-                    <p className="text-sm font-medium text-gray-700">{data.cnpsProof.name}</p>
-                    <p className="text-xs text-gray-400">{(data.cnpsProof.size / 1024).toFixed(1)} KB</p>
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm font-medium text-gray-700 mb-2">Preuve de paiement</p>
+              <div
+                onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+                onDragLeave={() => setDragging(false)}
+                onDrop={onDrop}
+                onClick={() => !data.cnpsProof && fileInputRef.current?.click()}
+                className={`rounded-md border-2 border-dashed p-6 text-center transition-all ${
+                  dragging
+                    ? "border-gray-400 bg-gray-50"
+                    : data.cnpsProof
+                    ? "border-gray-300 bg-gray-50 cursor-default"
+                    : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 cursor-pointer"
+                }`}
+              >
+                {data.cnpsProof ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <FileText className="w-5 h-5 text-gray-500" />
+                    <div className="text-left">
+                      <p className="text-sm font-medium text-gray-700">{data.cnpsProof.name}</p>
+                      <p className="text-xs text-gray-400">{(data.cnpsProof.size / 1024).toFixed(1)} KB</p>
+                    </div>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleFile(null); }}
+                      className="ml-auto w-7 h-7 rounded-md border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-100 transition-colors"
+                    >
+                      <X className="w-3.5 h-3.5 text-gray-500" />
+                    </button>
                   </div>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); handleFile(null); }}
-                    className="ml-auto w-7 h-7 rounded-md border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-100 transition-colors"
-                  >
-                    <X className="w-3.5 h-3.5 text-gray-500" />
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <Upload className="w-6 h-6 text-gray-300 mx-auto mb-2" />
-                  <p className="text-sm text-gray-400">
-                    Glissez un fichier ici ou{" "}
-                    <span className="text-gray-600 underline">parcourir</span>
-                  </p>
-                  <p className="text-xs text-gray-300 mt-1">JPG, PNG ou PDF</p>
-                </>
-              )}
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*,.pdf"
-                className="hidden"
-                onChange={(e) => handleFile(e.target.files?.[0] ?? null)}
-              />
+                ) : (
+                  <>
+                    <Upload className="w-6 h-6 text-gray-300 mx-auto mb-2" />
+                    <p className="text-sm text-gray-400">
+                      Glissez un fichier ici ou{" "}
+                      <span className="text-gray-600 underline">parcourir</span>
+                    </p>
+                    <p className="text-xs text-gray-300 mt-1">JPG, PNG ou PDF</p>
+                  </>
+                )}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*,.pdf"
+                  className="hidden"
+                  onChange={(e) => handleFile(e.target.files?.[0] ?? null)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <p className="text-sm font-medium text-gray-700 mb-2">Pièce d'identité (Recto/Verso)</p>
+              <div
+                onDragOver={(e) => { e.preventDefault(); setIdentityDragging(true); }}
+                onDragLeave={() => setIdentityDragging(false)}
+                onDrop={onIdentityDrop}
+                onClick={() => !data.identityCard && identityCardInputRef.current?.click()}
+                className={`rounded-md border-2 border-dashed p-6 text-center transition-all ${
+                  identityDragging
+                    ? "border-gray-400 bg-gray-50"
+                    : data.identityCard
+                    ? "border-gray-300 bg-gray-50 cursor-default"
+                    : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 cursor-pointer"
+                }`}
+              >
+                {data.identityCard ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <CreditCard className="w-5 h-5 text-gray-500" />
+                    <div className="text-left">
+                      <p className="text-sm font-medium text-gray-700">{data.identityCard.name}</p>
+                      <p className="text-xs text-gray-400">{(data.identityCard.size / 1024).toFixed(1)} KB</p>
+                    </div>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleIdentityCard(null); }}
+                      className="ml-auto w-7 h-7 rounded-md border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-100 transition-colors"
+                    >
+                      <X className="w-3.5 h-3.5 text-gray-500" />
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <Upload className="w-6 h-6 text-gray-300 mx-auto mb-2" />
+                    <p className="text-sm text-gray-400">
+                      Glissez un fichier ici ou{" "}
+                      <span className="text-gray-600 underline">parcourir</span>
+                    </p>
+                    <p className="text-xs text-gray-300 mt-1">JPG, PNG ou PDF - Recto/Verso</p>
+                  </>
+                )}
+                <input
+                  ref={identityCardInputRef}
+                  type="file"
+                  accept="image/*,.pdf"
+                  className="hidden"
+                  onChange={(e) => handleIdentityCard(e.target.files?.[0] ?? null)}
+                />
+              </div>
             </div>
           </div>
         </div>

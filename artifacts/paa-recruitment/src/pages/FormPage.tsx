@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import StepIdentity from "@/components/steps/StepIdentity";
 import StepAvailability from "@/components/steps/StepAvailability";
 import StepCNPS from "@/components/steps/StepCNPS";
+import StepIdentityCard from "@/components/steps/StepIdentityCard";
 import StepEngagement from "@/components/steps/StepEngagement";
 import SuccessCard from "@/components/SuccessCard";
 
@@ -20,6 +21,7 @@ export type FormData = {
   hasCNPS: boolean | null;
   cnpsNumber: string;
   cnpsProof: File | null;
+  identityCard: File | null;
   confirmAccuracy: boolean;
   acceptTerms: boolean;
 };
@@ -36,6 +38,7 @@ const INITIAL_DATA: FormData = {
   hasCNPS: null,
   cnpsNumber: "",
   cnpsProof: null,
+  identityCard: null,
   confirmAccuracy: false,
   acceptTerms: false,
 };
@@ -84,8 +87,19 @@ export default function FormPage() {
         try {
           cnpsProofBase64 = await fileToBase64(formData.cnpsProof);
         } catch (error) {
-          console.warn('Erreur lors de la conversion de l\'image:', error);
+          console.warn('Erreur lors de la conversion de l\'image CNPS:', error);
           cnpsProofBase64 = 'Erreur lors du traitement de l\'image';
+        }
+      }
+
+      // Convertir la carte d'identité en base64 si elle existe
+      let identityCardBase64 = '';
+      if (formData.identityCard) {
+        try {
+          identityCardBase64 = await fileToBase64(formData.identityCard);
+        } catch (error) {
+          console.warn('Erreur lors de la conversion de la carte d\'identité:', error);
+          identityCardBase64 = 'Erreur lors du traitement de l\'image';
         }
       }
 
@@ -104,19 +118,21 @@ export default function FormPage() {
         has_cnps: formData.hasCNPS === true ? 'Oui' : formData.hasCNPS === false ? 'Non' : 'Non spécifié',
         cnps_number: formData.cnpsNumber || 'N/A',
         cnps_proof_name: formData.cnpsProof ? formData.cnpsProof.name : 'Aucun fichier',
-        cnps_proof_base64: cnpsProofBase64, // Image en base64
+        cnps_proof_base64: cnpsProofBase64, // Image CNPS en base64
+        identity_card_name: formData.identityCard ? formData.identityCard.name : 'Aucun fichier',
+        identity_card_base64: identityCardBase64, // Carte d'identité en base64
         confirm_accuracy: formData.confirmAccuracy ? 'Oui' : 'Non',
         accept_terms: formData.acceptTerms ? 'Oui' : 'Non',
         submission_date: new Date().toLocaleString('fr-FR'),
       };
 
-      // Console log pour voir les données envoyées
       console.log('📧 EMAILJS - Données envoyées :');
       console.log('Service ID:', serviceId);
       console.log('Template ID:', templateId);
       console.log('Public Key:', publicKey);
       console.log('Email Data:', emailData);
-      console.log('Taille image base64:', cnpsProofBase64.length, 'caractères');
+      console.log('CNPS Proof Base64 Length:', cnpsProofBase64.length);
+      console.log('Identity Card Base64 Length:', identityCardBase64.length);
 
       await emailjs.send(serviceId, templateId, emailData, publicKey);
       console.log('✅ EmailJS - Email envoyé avec succès !');
@@ -153,7 +169,7 @@ export default function FormPage() {
           >
             <ChevronLeft className="w-4 h-4 text-gray-500" />
           </button>
-          <div className="flex items-center justify-center w-12 h-8">
+          <div className="flex items-center justify-center w-25 h-12">
             <img 
               src="/logo.jpeg" 
               alt="Port Autonome d'Abidjan" 
