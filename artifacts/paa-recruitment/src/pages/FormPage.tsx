@@ -74,6 +74,57 @@ export default function FormPage() {
     });
   };
 
+  const compressImageToBase64 = async (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          if (!ctx) {
+            reject(new Error('Canvas context not available'));
+            return;
+          }
+
+          // Calculer les dimensions pour réduire la taille
+          let { width, height } = img;
+          const maxSize = 800; // Taille maximale
+          
+          if (width > height) {
+            if (width > maxSize) {
+              height = (height * maxSize) / width;
+              width = maxSize;
+            }
+          } else {
+            if (height > maxSize) {
+              width = (width * maxSize) / height;
+              height = maxSize;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          // Dessiner l'image compressée
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Convertir en base64 avec qualité réduite
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
+          
+          console.log(`Image compressée: ${file.name} - ${(compressedBase64.length / 1024).toFixed(1)}KB`);
+          
+          resolve(compressedBase64);
+        };
+        img.onerror = reject;
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
   const sendEmail = async () => {
     try {
       // Configuration EmailJS - À remplacer par vos vraies clés
@@ -85,9 +136,9 @@ export default function FormPage() {
       let cnpsProofBase64 = '';
       if (formData.cnpsProof) {
         try {
-          cnpsProofBase64 = await fileToBase64(formData.cnpsProof);
+          cnpsProofBase64 = await compressImageToBase64(formData.cnpsProof);
         } catch (error) {
-          console.warn('Erreur lors de la conversion de l\'image CNPS:', error);
+          console.warn('Erreur lors de la compression de l\'image CNPS:', error);
           cnpsProofBase64 = 'Erreur lors du traitement de l\'image';
         }
       }
@@ -96,9 +147,9 @@ export default function FormPage() {
       let identityCardBase64 = '';
       if (formData.identityCard) {
         try {
-          identityCardBase64 = await fileToBase64(formData.identityCard);
+          identityCardBase64 = await compressImageToBase64(formData.identityCard);
         } catch (error) {
-          console.warn('Erreur lors de la conversion de la carte d\'identité:', error);
+          console.warn('Erreur lors de la compression de la carte d\'identité:', error);
           identityCardBase64 = 'Erreur lors du traitement de l\'image';
         }
       }
