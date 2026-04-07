@@ -1,19 +1,6 @@
 {
-  "version": 2,
-  "name": "paa-recruitment",
-  "builds": [
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/public"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  "buildCommand": "pnpm run vercel-build",
+  "outputDirectory": "dist/public",
+  "installCommand": "corepack enable && pnpm install --frozen-lockfile",
+  "framework": "vite"
 }
