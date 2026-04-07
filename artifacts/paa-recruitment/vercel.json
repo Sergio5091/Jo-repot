@@ -3,7 +3,7 @@
   "name": "paa-recruitment",
   "builds": [
     {
-      "src": "package.json",
+      "src": "build.sh",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist/public"
@@ -15,9 +15,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "dist/public",
-  "framework": null
+  ]
 }
