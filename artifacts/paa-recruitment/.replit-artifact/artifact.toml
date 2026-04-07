@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Port Autonome d'Abidjan — Recrutement"
+version = "1.0.0"
+id = "artifacts/paa-recruitment"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23263
+
+[services.development]
+run = "pnpm --filter @workspace/paa-recruitment run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/paa-recruitment", "run", "build" ]
+publicDir = "artifacts/paa-recruitment/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23263"
+BASE_PATH = "/"

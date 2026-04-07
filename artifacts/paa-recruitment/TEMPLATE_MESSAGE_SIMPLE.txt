@@ -1,0 +1,34 @@
+Bonjour,
+
+Vous avez reçu une nouvelle candidature dans le cadre du programme PAA.
+
+Détails du candidat :
+Nom complet : {{from_name}}
+ID Employé : {{employee_id}}
+Nom de famille : {{full_name}}
+Prénom : {{first_name}}
+Téléphone : {{phone}}
+
+Contact d'urgence :
+Nom : {{emergency_name}}
+Téléphone : {{emergency_phone}}
+
+Disponibilité :
+Problème de santé : {{health_issue}}
+Date de disponibilité : {{availability_date}}
+
+Informations CNPS :
+Carte CNPS : {{has_cnps}}
+Numéro CNPS : {{cnps_number}}
+Preuve de paiement : {{cnps_proof_name}}
+
+Validation :
+Confirmation exactitude : {{confirm_accuracy}}
+Acceptation conditions : {{accept_terms}}
+
+Date de soumission : {{submission_date}}
+
+Merci de bien vouloir traiter cette demande dans les plus brefs délais.
+
+Cordialement,
+Système de candidature

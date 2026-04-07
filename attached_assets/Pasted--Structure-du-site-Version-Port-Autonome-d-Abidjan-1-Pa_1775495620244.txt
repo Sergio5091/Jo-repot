@@ -1,0 +1,92 @@
+🌐 Structure du site (Version Port Autonome d’Abidjan)
+1. Page d'accueil (/) — Index.tsx
+🔷 Header fixe
+Fond : dégradé bleu marine
+Icône : ⚓ (ancre) ou 🚢 (navire)
+Titre : PORT AUTONOME D’ABIDJAN (PAA)
+Sous-titre : Direction des Ressources Humaines · République de Côte d’Ivoire
+Badge : Campagne de recrutement 2026
+✨ Carte centrale animée (fade-in)
+Cercle vert avec icône ✅
+Titre : Félicitations, vous êtes présélectionné(e) !
+
+Texte :
+
+Vous avez été retenu(e) pour poursuivre le processus de recrutement au Port Autonome d’Abidjan.
+Veuillez compléter votre dossier en remplissant le formulaire ci-dessous.
+
+Bouton CTA :
+Texte : Accéder au formulaire
+Icône : ✍️
+Style : bouton arrondi bleu marine
+📌 Cartes d'information
+💼 Stage professionnel — Durée de 3 à 6 mois
+🕐 Inscription rapide — Formulaire en 4 étapes
+🛡️ Données sécurisées — Informations strictement confidentielles
+2. Page formulaire (/formulaire) — FormPage.tsx
+🔵 Barre de progression (4 étapes animées)
+Étapes avec icônes + labels + animation fluide
+👤 Étape 1 — Identité (StepIdentity.tsx)
+ID employé (placeholder : PAA-03-123)
+Nom complet
+Prénom
+Téléphone mobile (+225 pré-rempli)
+Personne à prévenir en cas d'urgence :
+Nom
+Téléphone
+📅 Étape 2 — Disponibilité (StepAvailability.tsx)
+Problème de santé (optionnel)
+Date de disponibilité (date picker)
+💰 Bloc d'information (bleu ciel)
+Indemnité de stage : 40 000 – 80 000 FCFA
+Salaire CDI : 100 000 – 250 000 FCFA
+🏢 Étape 3 — CNPS (StepCNPS.tsx)
+Question :
+
+➡️ Avez-vous une carte CNPS ?
+
+✔️ Si OUI
+Champ : Numéro CNPS
+❌ Si NON
+
+Instructions :
+
+Frais de dossier CNPS : 14 500 FCFA
+
+Paiement via :
+📱 WhatsApp / Wave : 2250767554748
+
+Texte explicatif :
+
+Ces frais correspondent à l’ouverture et au traitement de votre dossier auprès de la
+Caisse Nationale de Prévoyance Sociale (CNPS) en Côte d’Ivoire.
+
+📎 Upload
+Zone drag & drop
+Formats : image / PDF
+Libellé : Preuve de paiement
+✅ Étape 4 — Engagement (StepEngagement.tsx)
+☑️ Je confirme l'exactitude des informations fournies
+☑️ J'accepte les conditions générales d'utilisation
+🚀 Bouton final
+Texte : Soumettre le dossier
+Loader animé
+🎉 Après soumission
+Carte verte :
+Dossier soumis avec succès !
+
+Message :
+
+Votre candidature a bien été enregistrée.
+Vous serez contacté(e) par la Direction des Ressources Humaines.
+
+Bouton :
+Retour à l’accueil
+📩 Informations de contact
+📧 Email : supportrecrut@gmail.com
+📱 WhatsApp / Wave : 2250767554748
+⚠️ Détail important (cohérence)
+Pays ciblé : Côte d’Ivoire 🇨🇮
+Organisme social : CNPS (et non CNSS)
+Indicatif : +225
+Identité visuelle : maritime (⚓🚢)
