@@ -9,8 +9,12 @@ export default function SuccessCard({ onHome }: Props) {
     <div className="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-3">
-          <div className="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 bg-gray-50">
-            <Anchor className="w-4 h-4 text-gray-500" />
+          <div className="flex items-center justify-center w-12 h-8">
+            <img 
+              src="/logo.jpeg" 
+              alt="Port Autonome d'Abidjan" 
+              className="h-full w-auto object-contain"
+            />
           </div>
           <div>
             <h1 className="text-sm font-semibold text-gray-800 uppercase tracking-widest">Port Autonome d'Abidjan</h1>

@@ -153,8 +153,12 @@ export default function FormPage() {
           >
             <ChevronLeft className="w-4 h-4 text-gray-500" />
           </button>
-          <div className="flex items-center justify-center w-8 h-8 rounded-md border border-gray-200 bg-gray-50">
-            <Anchor className="w-4 h-4 text-gray-500" />
+          <div className="flex items-center justify-center w-12 h-8">
+            <img 
+              src="/logo.jpeg" 
+              alt="Port Autonome d'Abidjan" 
+              className="h-full w-auto object-contain"
+            />
           </div>
           <div className="flex-1 min-w-0">
             <h1 className="text-sm font-semibold text-gray-800 uppercase tracking-widest leading-tight">

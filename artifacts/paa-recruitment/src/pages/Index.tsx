@@ -8,8 +8,12 @@ export default function Index() {
     <div className="min-h-screen bg-white text-gray-800">
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-5xl mx-auto px-6 py-3 flex items-center gap-3">
-          <div className="flex items-center justify-center w-9 h-9 rounded-full border border-gray-200 bg-gray-50">
-            <Anchor className="w-4 h-4 text-gray-600" />
+          <div className="flex items-center justify-center w-12 h-9">
+            <img 
+              src="/logo.jpeg" 
+              alt="Port Autonome d'Abidjan" 
+              className="h-full w-auto object-contain"
+            />
           </div>
           <div className="flex-1 min-w-0">
             <h1 className="text-sm font-semibold tracking-widest text-gray-800 uppercase leading-tight">
