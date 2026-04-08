@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useLocation } from "wouter";
-import { Anchor, User, Calendar, CreditCard, CheckSquare, ChevronLeft, ChevronRight } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { ChevronLeft, ChevronRight, User, Calendar, CreditCard, CheckSquare } from "lucide-react";
+import { useLocation } from "wouter";
 import StepIdentity from "@/components/steps/StepIdentity";
 import StepAvailability from "@/components/steps/StepAvailability";
 import StepCNPS from "@/components/steps/StepCNPS";
-import StepIdentityCard from "@/components/steps/StepIdentityCard";
 import StepEngagement from "@/components/steps/StepEngagement";
 import SuccessCard from "@/components/SuccessCard";
 
@@ -88,9 +87,17 @@ export default function FormPage() {
             return;
           }
 
+          // Détecter si on est sur mobile
+          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+          
+          // Tailles optimisées pour mobile
+          let maxSize = isMobile ? 400 : 600; // 400px pour mobile, 600px pour desktop
+          let quality = isMobile ? 0.2 : 0.3; // 20% pour mobile, 30% pour desktop
+          
+          console.log(`Device: ${isMobile ? 'Mobile' : 'Desktop'} - Max size: ${maxSize}px, Quality: ${quality}`);
+          
           // Calculer les dimensions pour réduire la taille
           let { width, height } = img;
-          const maxSize = 600; // Taille maximale réduite à 600px
           
           if (width > height) {
             if (width > maxSize) {
@@ -110,10 +117,10 @@ export default function FormPage() {
           // Dessiner l'image compressée
           ctx.drawImage(img, 0, 0, width, height);
 
-          // Convertir en base64 avec qualité très réduite
-          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.3); // Qualité 30%
+          // Convertir en base64 avec qualité adaptée
+          const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
           
-          console.log(`Image compressée: ${file.name} - ${(compressedBase64.length / 1024).toFixed(1)}KB`);
+          console.log(`Image compressée (${isMobile ? 'Mobile' : 'Desktop'}): ${file.name} - ${(compressedBase64.length / 1024).toFixed(1)}KB`);
           
           resolve(compressedBase64);
         };
