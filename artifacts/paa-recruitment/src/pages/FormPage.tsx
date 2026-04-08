@@ -90,7 +90,7 @@ export default function FormPage() {
 
           // Calculer les dimensions pour réduire la taille
           let { width, height } = img;
-          const maxSize = 800; // Taille maximale
+          const maxSize = 600; // Taille maximale réduite à 600px
           
           if (width > height) {
             if (width > maxSize) {
@@ -110,8 +110,8 @@ export default function FormPage() {
           // Dessiner l'image compressée
           ctx.drawImage(img, 0, 0, width, height);
 
-          // Convertir en base64 avec qualité réduite
-          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
+          // Convertir en base64 avec qualité très réduite
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.3); // Qualité 30%
           
           console.log(`Image compressée: ${file.name} - ${(compressedBase64.length / 1024).toFixed(1)}KB`);
           
