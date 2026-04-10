@@ -30,6 +30,12 @@ export default function StepCNPS({ data, onChange }: Props) {
     if (file) handleIdentityCard(file);
   };
 
+  // Validation pour vérifier si les fichiers sont requis
+  const isFilesRequired = data.hasCNPS === false;
+  const isCnpsProofMissing = isFilesRequired && !data.cnpsProof;
+  const isIdentityCardMissing = isFilesRequired && !data.identityCard;
+  const hasValidationError = isCnpsProofMissing || isIdentityCardMissing;
+
   return (
     <div>
       <div className="mb-6 pb-5 border-b border-gray-100">
