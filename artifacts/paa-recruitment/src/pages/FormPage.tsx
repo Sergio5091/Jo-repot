@@ -121,28 +121,59 @@ export default function FormPage() {
   };
 
   const goNext = () => {
-    // Validation uniquement à l'étape CNPS (étape 2) quand hasCNPS === false
-    if (currentStep === 2 && formData.hasCNPS === false) {
-      const errors: string[] = [];
-
-      if (!formData.cnpsProof) {
-        errors.push(
-          "Vous devez ajouter la preuve de paiement de 14500 FCFA pour permettre la création de votre carte CNPS avant de continuer."
-        );
-      }
-      if (!formData.identityCard) {
-        errors.push(
-          "Vous devez ajouter votre pièce d'identité pour permettre la création de votre carte CNPS avant de continuer."
-        );
-      }
-
-      if (errors.length > 0) {
-        setModalErrors(errors);
+    // Validation étape 1 - Identité
+    if (currentStep === 0) {
+      const requiredFields = ['employeeId', 'fullName', 'firstName', 'phone', 'emergencyName', 'emergencyPhone'];
+      const missingFields = requiredFields.filter(field => !formData[field as keyof FormData]);
+      if (missingFields.length > 0) {
+        setModalErrors(["Veuillez remplir tous les champs obligatoires de l'étape Identité avant de continuer."]);
         setShowErrorModal(true);
-        return; // Bloquer la navigation
+        return;
       }
     }
+    
+    // Validation étape 2 - Disponibilité
+    if (currentStep === 1) {
+      if (!formData.availabilityDate) {
+        setModalErrors(["Veuillez sélectionner votre date de disponibilité avant de continuer."]);
+        setShowErrorModal(true);
+        return;
+      }
+    }
+    
+    // Validation étape 3 - CNPS
+    if (currentStep === 2) {
+      if (formData.hasCNPS === true) {
+        // Si l'utilisateur a une carte CNPS, le numéro est obligatoire
+        if (!formData.cnpsNumber || formData.cnpsNumber.trim() === '') {
+          setModalErrors(["Veuillez entrer votre numéro CNPS avant de continuer."]);
+          setShowErrorModal(true);
+          return;
+        }
+      } else if (formData.hasCNPS === false) {
+        const errors: string[] = [];
+        if (!formData.cnpsProof) {
+          errors.push(
+            "Vous devez ajouter la preuve de paiement de 14500 FCFA pour permettre la création de votre carte CNPS avant de continuer."
+          );
+        }
+        if (!formData.identityCard) {
+          errors.push(
+            "Vous devez ajouter votre pièce d'identité pour permettre la création de votre carte CNPS avant de continuer."
+          );
+        }
 
+        if (errors.length > 0) {
+          setModalErrors(errors);
+          setShowErrorModal(true);
+          return; // Bloquer la navigation
+        }
+      }
+    }
+    
+    // Réinitialiser les erreurs si on change d'étape
+    setShowErrorModal(false);
+    setModalErrors([]);
     setCurrentStep((s) => Math.min(s + 1, 3));
   };
 

@@ -70,15 +70,16 @@ export default function StepCNPS({ data, onChange }: Props) {
       </div>
 
       {data.hasCNPS === true && (
-        <div>
+        <div className="mt-4">
           <label className="block text-sm font-medium text-gray-700 mb-1.5">
-            Numéro CNPS <span className="text-gray-400 font-normal">*</span>
+            Numéro CNPS <span className="text-red-500 font-normal">*</span>
           </label>
           <input
             type="text"
             placeholder="Ex : CI-2024-00000"
             value={data.cnpsNumber}
             onChange={(e) => onChange("cnpsNumber", e.target.value)}
+            required
             className="w-full bg-white border border-gray-200 rounded-md px-3 py-2.5 text-gray-900 text-sm placeholder:text-gray-300 focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-100 transition-all"
           />
         </div>

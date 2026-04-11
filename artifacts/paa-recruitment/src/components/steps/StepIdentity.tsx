@@ -20,6 +20,7 @@ export default function StepIdentity({ data, onChange }: Props) {
             placeholder="PAA-03-123"
             value={data.employeeId}
             onChange={(e) => onChange("employeeId", e.target.value)}
+            required
             className="field-input"
           />
         </Field>
@@ -31,6 +32,7 @@ export default function StepIdentity({ data, onChange }: Props) {
               placeholder="KOUASSI"
               value={data.fullName}
               onChange={(e) => onChange("fullName", e.target.value)}
+              required
               className="field-input"
             />
           </Field>
@@ -40,6 +42,7 @@ export default function StepIdentity({ data, onChange }: Props) {
               placeholder="Jean"
               value={data.firstName}
               onChange={(e) => onChange("firstName", e.target.value)}
+              required
               className="field-input"
             />
           </Field>
@@ -51,6 +54,7 @@ export default function StepIdentity({ data, onChange }: Props) {
             placeholder="+225 0700000000"
             value={data.phone}
             onChange={(e) => onChange("phone", e.target.value)}
+            required
             className="field-input"
           />
         </Field>
@@ -60,21 +64,23 @@ export default function StepIdentity({ data, onChange }: Props) {
             Personne à prévenir en cas d'urgence
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Field label="Nom complet">
+            <Field label="Nom complet" required>
               <input
                 type="text"
                 placeholder="TRAORÉ Marie"
                 value={data.emergencyName}
                 onChange={(e) => onChange("emergencyName", e.target.value)}
+                required
                 className="field-input"
               />
             </Field>
-            <Field label="Téléphone">
+            <Field label="Téléphone" required>
               <input
                 type="tel"
                 placeholder="+225 0700000000"
                 value={data.emergencyPhone}
                 onChange={(e) => onChange("emergencyPhone", e.target.value)}
+                required
                 className="field-input"
               />
             </Field>

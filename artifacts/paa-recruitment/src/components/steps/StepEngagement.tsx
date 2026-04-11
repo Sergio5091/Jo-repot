@@ -44,10 +44,13 @@ export default function StepEngagement({ data, onChange }: Props) {
               </svg>
             )}
           </div>
-          <span className="text-sm text-gray-600 leading-relaxed">
-            Je confirme l'exactitude des informations fournies dans ce dossier et m'engage à fournir
-            les justificatifs correspondants si demandé.
-          </span>
+          <div>
+            <span className="text-sm text-gray-600 leading-relaxed">
+              Je confirme l'exactitude des informations fournies dans ce dossier et m'engage à fournir
+              les justificatifs correspondants si demandé.
+            </span>
+            <span className="text-red-500 font-normal"> *</span>
+          </div>
         </label>
 
         <label
@@ -65,10 +68,13 @@ export default function StepEngagement({ data, onChange }: Props) {
               </svg>
             )}
           </div>
-          <span className="text-sm text-gray-600 leading-relaxed">
-            J'accepte les conditions générales d'utilisation et la politique de confidentialité du
-            Port Autonome d'Abidjan concernant le traitement de mes données personnelles.
-          </span>
+          <div>
+            <span className="text-sm text-gray-600 leading-relaxed">
+              J'accepte les conditions générales d'utilisation et la politique de confidentialité du
+              Port Autonome d'Abidjan concernant le traitement de mes données personnelles.
+            </span>
+            <span className="text-red-500 font-normal"> *</span>
+          </div>
         </label>
       </div>
 
