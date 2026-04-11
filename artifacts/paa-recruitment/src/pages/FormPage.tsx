@@ -143,6 +143,13 @@ export default function FormPage() {
     
     // Validation étape 3 - CNPS
     if (currentStep === 2) {
+      // Vérifier d'abord si l'utilisateur a fait un choix
+      if (formData.hasCNPS === null) {
+        setModalErrors(["Veuillez sélectionner 'Oui' ou 'Non' pour la carte CNPS avant de continuer."]);
+        setShowErrorModal(true);
+        return;
+      }
+      
       if (formData.hasCNPS === true) {
         // Si l'utilisateur a une carte CNPS, le numéro est obligatoire
         if (!formData.cnpsNumber || formData.cnpsNumber.trim() === '') {

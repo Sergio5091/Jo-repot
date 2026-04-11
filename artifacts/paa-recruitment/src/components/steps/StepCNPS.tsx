@@ -67,15 +67,6 @@ export default function StepCNPS({ data, onChange }: Props) {
             Non
           </button>
         </div>
-        {/* Champ caché pour forcer la sélection */}
-        <input
-          type="text"
-          value={data.hasCNPS === null ? "" : data.hasCNPS ? "oui" : "non"}
-          onChange={() => {}}
-          required
-          className="hidden"
-          style={{ opacity: 0, position: 'absolute', left: '-9999px' }}
-        />
       </div>
 
       {data.hasCNPS === true && (
