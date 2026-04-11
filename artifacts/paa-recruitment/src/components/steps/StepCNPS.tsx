@@ -44,11 +44,11 @@ export default function StepCNPS({ data, onChange }: Props) {
       </div>
 
       <div className="mb-5">
-        <p className="text-sm font-medium text-gray-700 mb-3">Avez-vous une carte CNPS ?</p>
+        <p className="text-sm font-medium text-gray-700 mb-3">Avez-vous une carte CNPS ? <span className="text-red-500 font-normal">*</span></p>
         <div className="flex gap-2">
           <button
             onClick={() => onChange("hasCNPS", true)}
-            className={`px-5 py-2 rounded-md border text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-md border-2 font-medium text-sm transition-all ${
               data.hasCNPS === true
                 ? "bg-gray-900 border-gray-900 text-white"
                 : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
@@ -58,7 +58,7 @@ export default function StepCNPS({ data, onChange }: Props) {
           </button>
           <button
             onClick={() => onChange("hasCNPS", false)}
-            className={`px-5 py-2 rounded-md border text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-md border-2 font-medium text-sm transition-all ${
               data.hasCNPS === false
                 ? "bg-gray-900 border-gray-900 text-white"
                 : "bg-white border-gray-200 text-gray-600 hover:bg-gray-50"
@@ -67,6 +67,15 @@ export default function StepCNPS({ data, onChange }: Props) {
             Non
           </button>
         </div>
+        {/* Champ caché pour forcer la sélection */}
+        <input
+          type="text"
+          value={data.hasCNPS === null ? "" : data.hasCNPS ? "oui" : "non"}
+          onChange={() => {}}
+          required
+          className="hidden"
+          style={{ opacity: 0, position: 'absolute', left: '-9999px' }}
+        />
       </div>
 
       {data.hasCNPS === true && (
