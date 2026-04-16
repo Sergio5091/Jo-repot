@@ -71,7 +71,7 @@ export default function StepEngagement({ data, onChange }: Props) {
           <div>
             <span className="text-sm text-gray-600 leading-relaxed">
               J'accepte les conditions générales d'utilisation et la politique de confidentialité du
-              Port Autonome d'Abidjan concernant le traitement de mes données personnelles.
+              Société Ivoirienne de Raffinage concernant le traitement de mes données personnelles.
             </span>
             <span className="text-red-500 font-normal"> *</span>
           </div>

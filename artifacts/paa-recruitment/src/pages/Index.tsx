@@ -11,13 +11,13 @@ export default function Index() {
           <div className="flex items-center justify-center w-24 h-9">
             <img 
               src="/logo.jpeg" 
-              alt="Port Autonome d'Abidjan" 
+              alt="Société Ivoirienne de Raffinage" 
               className="h-full w-auto object-contain"
             />
           </div>
           <div className="flex-1 min-w-0">
             <h1 className="text-sm font-semibold tracking-widest text-gray-800 uppercase leading-tight">
-              Port Autonome d'Abidjan
+              Société Ivoirienne de Raffinage
             </h1>
             <p className="text-xs text-gray-400">Direction des Ressources Humaines · République de Côte d'Ivoire</p>
           </div>
@@ -40,7 +40,7 @@ export default function Index() {
 
             <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg mx-auto">
               Vous avez été retenu(e) pour poursuivre le processus de recrutement au{" "}
-              <span className="font-semibold text-gray-700">Port Autonome d'Abidjan</span>.
+              <span className="font-semibold text-gray-700">Société Ivoirienne de Raffinage</span>.
               Veuillez compléter votre dossier en remplissant le formulaire ci-dessous.
             </p>
 
@@ -83,7 +83,7 @@ export default function Index() {
 
       <footer className="border-t border-gray-200 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6 py-4 text-center text-gray-400 text-xs">
-          Port Autonome d'Abidjan — Direction des Ressources Humaines &nbsp;·&nbsp;
+          Société Ivoirienne de Raffinage — Direction des Ressources Humaines &nbsp;·&nbsp;
           supportrecrut@gmail.com &nbsp;·&nbsp; WhatsApp / Wave : 2250767554748
         </div>
       </footer>

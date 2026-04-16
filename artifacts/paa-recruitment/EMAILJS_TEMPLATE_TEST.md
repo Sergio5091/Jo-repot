@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>🚢 Port Autonome d'Abidjan</h1>
+        <h1>🏭 Société Ivoirienne de Raffinage</h1>
         <h2>TEST - Variables EmailJS</h2>
     </div>
 

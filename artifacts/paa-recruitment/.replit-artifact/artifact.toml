@@ -1,6 +1,6 @@
 kind = "web"
 previewPath = "/"
-title = "Port Autonome d'Abidjan — Recrutement"
+title = "Société Ivoirienne de Raffinage — Recrutement"
 version = "1.0.0"
 id = "artifacts/paa-recruitment"
 router = "path"

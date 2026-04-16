@@ -394,13 +394,13 @@ export default function FormPage() {
           <div className="flex items-center justify-center w-25 h-12">
             <img
               src="/logo.jpeg"
-              alt="Port Autonome d'Abidjan"
+              alt="Société Ivoirienne de Raffinage"
               className="h-full w-auto object-contain"
             />
           </div>
           <div className="flex-1 min-w-0">
             <h1 className="text-sm font-semibold text-gray-800 uppercase tracking-widest leading-tight">
-              Port Autonome d'Abidjan
+              Société Ivoirienne de Raffinage
             </h1>
             <p className="text-xs text-gray-400">
               Dossier de candidature — Recrutement 2026

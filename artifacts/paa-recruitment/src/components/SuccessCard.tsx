@@ -12,12 +12,12 @@ export default function SuccessCard({ onHome }: Props) {
           <div className="flex items-center justify-center w-24 h-8">
             <img 
               src="/logo.jpeg" 
-              alt="Port Autonome d'Abidjan" 
+              alt="Société Ivoirienne de Raffinage" 
               className="h-full w-auto object-contain"
             />
           </div>
           <div>
-            <h1 className="text-sm font-semibold text-gray-800 uppercase tracking-widest">Port Autonome d'Abidjan</h1>
+            <h1 className="text-sm font-semibold text-gray-800 uppercase tracking-widest">Société Ivoirienne de Raffinage</h1>
             <p className="text-xs text-gray-400">Direction des Ressources Humaines</p>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function SuccessCard({ onHome }: Props) {
 
       <footer className="border-t border-gray-200 bg-white">
         <div className="max-w-3xl mx-auto px-6 py-4 text-center text-gray-400 text-xs">
-          Port Autonome d'Abidjan — République de Côte d'Ivoire
+          Société Ivoirienne de Raffinage — République de Côte d'Ivoire
         </div>
       </footer>
     </div>

@@ -12,3 +12,7 @@ lerna-debug.log*
 .idea
 *.log
 dist
+pnpm-lock.yaml
+package-lock.json
+.yarn
+.yarn-integrity

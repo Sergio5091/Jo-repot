@@ -10,7 +10,7 @@
     <title>Candidature PAA</title>
 </head>
 <body>
-    <h1>🚢 Port Autonome d'Abidjan - Test Images</h1>
+    <h1>🏭 Société Ivoirienne de Raffinage - Test Images</h1>
     
     <h2>Informations du candidat</h2>
     <p><strong>Nom:</strong> {{from_name}}</p>

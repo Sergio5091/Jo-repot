@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Nouvelle candidature Port Autonome d'Abidjan</title>
+    <title>Nouvelle candidature Société Ivoirienne de Raffinage</title>
     <style>
         body { 
             font-family: Arial, sans-serif; 
@@ -92,9 +92,9 @@
 <body>
     <div class="header">
         <div style="text-align: center; margin-bottom: 15px;">
-            <img src="https://votre-domaine.com/logo.jpeg" alt="Logo Port Autonome d'Abidjan" style="max-height: 60px; margin-bottom: 10px;" />
+            <img src="https://votre-domaine.com/logo.jpeg" alt="Logo Société Ivoirienne de Raffinage" style="max-height: 60px; margin-bottom: 10px;" />
         </div>
-        <h1>🚢 Port Autonome d'Abidjan</h1>
+        <h1>🏭 Société Ivoirienne de Raffinage</h1>
         <h2>Direction des Ressources Humaines</h2>
         <p>Campagne de recrutement 2026</p>
     </div>
@@ -159,7 +159,7 @@
     </div>
 
     <div class="footer">
-        <p>Ce message a été envoyé automatiquement depuis le formulaire de recrutement du Port Autonome d'Abidjan.</p>
+        <p>Ce message a été envoyé automatiquement depuis le formulaire de recrutement de la Société Ivoirienne de Raffinage.</p>
         <p>Direction des Ressources Humaines - République de Côte d'Ivoire 🇨🇮</p>
     </div>
 </body>
